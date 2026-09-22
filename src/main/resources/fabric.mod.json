@@ -16,13 +16,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"name.modid.TennoCraft"
+			"name.tennocraft.TennoCraft"
 		],
 		"client": [
-			"name.modid.TennoCraftClient"
+			"name.tennocraft.TennoCraftClient"
 		],
 		"fabric-datagen": [
-			"name.modid.TennoCraftDataGenerator"
+			"name.tennocraft.TennoCraftDataGenerator"
 		]
 	},
 	"mixins": [

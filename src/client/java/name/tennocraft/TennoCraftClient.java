@@ -1,4 +1,4 @@
-package name.modid;
+package name.tennocraft;
 
 import net.fabricmc.api.ClientModInitializer;
 
