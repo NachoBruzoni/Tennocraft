@@ -18,6 +18,20 @@ public class InfestedZombieEntity extends Zombie {
         if (this.level().isClientSide) {
             dispatcher.idle();
         }
+        else {
+            trySpreadInfestation();
+        }
+    }
+    private void trySpreadInfestation() {
+        if (this.random.nextInt(2048) != 0) return;
+
+        var searchBox = this.getBoundingBox().inflate(4.0);
+        var nearby = this.level().getEntitiesOfClass(net.minecraft.world.entity.monster.Zombie.class, searchBox,
+                z -> !(z instanceof InfestedZombieEntity));
+        if (nearby.isEmpty()) return;
+
+        var target = nearby.get(this.random.nextInt(nearby.size()));
+        InfestationHelper.convertToInfested(target);
     }
 
 }

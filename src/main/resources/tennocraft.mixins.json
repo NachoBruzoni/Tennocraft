@@ -3,7 +3,9 @@
 	"package": "name.tennocraft.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"BlockRandomTickMixin",
+		"BlockBehaviourRandomTickMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
