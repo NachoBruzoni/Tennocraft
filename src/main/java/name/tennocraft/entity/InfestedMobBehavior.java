@@ -6,6 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.phys.AABB;
 
 import java.util.List;
@@ -15,7 +16,7 @@ public class InfestedMobBehavior {
     /** Call from registerGoals(), after super.registerGoals(). Makes the mob aggressive toward anything not already infested. */
     public static void addAggroGoal(Mob mob, GoalSelector targetSelector) {
         targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(mob, Mob.class, true,
-                entity -> !(entity instanceof InfestedMob)));
+                entity -> !(entity instanceof InfestedMob) && !(entity instanceof Creeper)));
     }
 
     /** Call every tick, server-side only. The existing "spread to nearby mobs" behavior, generalized. */

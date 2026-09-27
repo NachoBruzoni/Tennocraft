@@ -26,6 +26,8 @@ public class EntityRegistry {
     public static void registerModEntityTypes() {
         TennoCraft.LOGGER.info("Registering entity types for " + TennoCraft.TENNOCRAFT);
         FabricDefaultAttributeRegistry.register(INFESTED_ZOMBIE, Zombie.createAttributes());
+
+        InfestationRegistry.register(EntityType.ZOMBIE, INFESTED_ZOMBIE);
     }
 
 }
