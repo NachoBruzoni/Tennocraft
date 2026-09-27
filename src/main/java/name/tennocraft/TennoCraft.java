@@ -2,6 +2,7 @@ package name.tennocraft;
 
 import name.tennocraft.registry.EntityRegistry;
 import name.tennocraft.registry.ItemRegistry;
+import name.tennocraft.registry.ModSounds;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,6 @@ public class TennoCraft implements ModInitializer {
 		LOGGER.info("Alad V's sellin' the latest in asset security");
 		ItemRegistry.registerModItems();
 		EntityRegistry.registerModEntityTypes();
+		ModSounds.registerModSounds();
 	}
 }

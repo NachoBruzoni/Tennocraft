@@ -1,0 +1,11 @@
+{
+  "infested_zombie_ambient": {
+    "sounds": ["tennocraft:infested_zombie_ambient"]
+  },
+  "infested_zombie_hurt": {
+    "sounds": ["tennocraft:infested_zombie_hurt"]
+  },
+  "infested_zombie_death": {
+    "sounds": ["tennocraft:infested_zombie_death"]
+  }
+}

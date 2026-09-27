@@ -1,5 +1,6 @@
 package name.tennocraft.mixin;
 
+import name.tennocraft.registry.EntityRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -41,6 +42,6 @@ public class BlockBehaviourRandomTickMixin {
         if (candidates.isEmpty()) return;
 
         Zombie target = candidates.get(random.nextInt(candidates.size()));
-        InfestationHelper.convertToInfested(target);
+        InfestationHelper.convertToInfested(target, EntityRegistry.INFESTED_ZOMBIE);
     }
 }
