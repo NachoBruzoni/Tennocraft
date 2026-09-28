@@ -1,6 +1,7 @@
 package name.tennocraft.registry;
 
 import name.tennocraft.TennoCraft;
+import name.tennocraft.entity.InfestedSkeletonEntity;
 import name.tennocraft.entity.InfestedZombieEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -20,14 +21,22 @@ public class EntityRegistry {
             FabricEntityTypeBuilder.create(MobCategory.MONSTER, InfestedZombieEntity::new)
                     .dimensions(EntityDimensions.scalable(1.6F, 1.3F))
                     .build()
-
+    );
+    public static final EntityType<InfestedSkeletonEntity> INFESTED_SKELETON = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE,
+            new ResourceLocation(TennoCraft.TENNOCRAFT, "infested_skeleton"),
+            FabricEntityTypeBuilder.create(MobCategory.MONSTER, InfestedSkeletonEntity::new)
+                    .dimensions(EntityDimensions.scalable(1.70F, 0.8F))
+                    .build()
     );
 
     public static void registerModEntityTypes() {
         TennoCraft.LOGGER.info("Registering entity types for " + TennoCraft.TENNOCRAFT);
         FabricDefaultAttributeRegistry.register(INFESTED_ZOMBIE, Zombie.createAttributes());
+        FabricDefaultAttributeRegistry.register(INFESTED_SKELETON, Zombie.createAttributes());
 
         InfestationRegistry.register(EntityType.ZOMBIE, INFESTED_ZOMBIE);
+        InfestationRegistry.register(EntityType.SKELETON, INFESTED_SKELETON);
     }
 
 }
