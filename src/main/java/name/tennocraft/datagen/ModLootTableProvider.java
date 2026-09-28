@@ -37,5 +37,17 @@ public class ModLootTableProvider extends SimpleFabricLootTableProvider {
                         .add(LootItem.lootTableItem(ItemRegistry.MUTAGEN_SAMPLE)
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
+
+        exporter.accept(EntityRegistry.INFESTED_SKELETON.getDefaultLootTable(), LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(Items.BONE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0, 2)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1)))))
+                .withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(ItemRegistry.MUTAGEN_SAMPLE)
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0, 1))))));
     }
 }

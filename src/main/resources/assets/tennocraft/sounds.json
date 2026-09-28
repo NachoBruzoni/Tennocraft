@@ -7,5 +7,14 @@
   },
   "infested_zombie_death": {
     "sounds": ["tennocraft:infested_zombie_death"]
+  },
+  "infested_skeleton_ambient": {
+    "sounds": ["tennocraft:infested_skeleton_ambient"]
+  },
+  "infested_skeleton_hurt": {
+    "sounds": ["tennocraft:infested_skeleton_hurt"]
+  },
+  "infested_skeleton_death": {
+    "sounds": ["tennocraft:infested_zombie_death"]
   }
 }

@@ -11,6 +11,10 @@ public class ModSounds {
     public static final SoundEvent INFESTED_ZOMBIE_HURT = register("infested_zombie_hurt");
     public static final SoundEvent INFESTED_ZOMBIE_DEATH = register("infested_zombie_death");
 
+    public static final SoundEvent INFESTED_SKELETON_AMBIENT = register("infested_skeleton_ambient");
+    public static final SoundEvent INFESTED_SKELETON_HURT = register("infested_skeleton_hurt");
+    public static final SoundEvent INFESTED_SKELETON_DEATH = register("infested_skeleton_death");
+
     private static SoundEvent register(String path) {
         ResourceLocation id = new ResourceLocation(TennoCraft.TENNOCRAFT, path);
         return net.minecraft.core.Registry.register(BuiltInRegistries.SOUND_EVENT, id, SoundEvent.createVariableRangeEvent(id));
