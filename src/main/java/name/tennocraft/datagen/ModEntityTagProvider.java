@@ -19,6 +19,7 @@ public class ModEntityTagProvider extends FabricTagProvider.EntityTypeTagProvide
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         getOrCreateTagBuilder(ModTags.INFESTED)
-                .add(EntityRegistry.INFESTED_ZOMBIE);
+                .add(EntityRegistry.INFESTED_ZOMBIE)
+                .add(EntityRegistry.INFESTED_SKELETON);
     }
 }

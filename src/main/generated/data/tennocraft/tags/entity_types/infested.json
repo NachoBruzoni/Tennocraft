@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "tennocraft:infested_zombie"
+    "tennocraft:infested_zombie",
+    "tennocraft:infested_skeleton"
   ]
 }
