@@ -3,6 +3,8 @@ package name.tennocraft.registry;
 import name.tennocraft.TennoCraft;
 import name.tennocraft.entity.InfestedSkeletonEntity;
 import name.tennocraft.entity.InfestedZombieEntity;
+import name.tennocraft.weapon.TennoArrowProjectile;
+import name.tennocraft.weapon.TennoThrownProjectile;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.minecraft.core.Registry;
@@ -44,5 +46,15 @@ public class EntityRegistry {
         InfestationRegistry.register(EntityType.ZOMBIE, INFESTED_ZOMBIE);
         InfestationRegistry.register(EntityType.SKELETON, INFESTED_SKELETON);
     }
+
+    public static final EntityType<TennoThrownProjectile> TENNO_THROWN_PROJECTILE = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(TennoCraft.TENNOCRAFT, "tenno_thrown_projectile"),
+            FabricEntityTypeBuilder.<TennoThrownProjectile>create(MobCategory.MISC, TennoThrownProjectile::new)
+                    .dimensions(EntityDimensions.scalable(0.25F, 0.25F)).build());
+
+    public static final EntityType<TennoArrowProjectile> TENNO_ARROW_PROJECTILE = Registry.register(
+            BuiltInRegistries.ENTITY_TYPE, new ResourceLocation(TennoCraft.TENNOCRAFT, "tenno_arrow_projectile"),
+            FabricEntityTypeBuilder.<TennoArrowProjectile>create(MobCategory.MISC, TennoArrowProjectile::new)
+                    .dimensions(EntityDimensions.scalable(0.5F, 0.5F)).build());
 
 }

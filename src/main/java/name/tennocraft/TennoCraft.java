@@ -3,6 +3,7 @@ package name.tennocraft;
 import name.tennocraft.registry.EntityRegistry;
 import name.tennocraft.registry.ItemRegistry;
 import name.tennocraft.registry.ModSounds;
+import name.tennocraft.weapon.RangedWeaponItem;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,5 +23,6 @@ public class TennoCraft implements ModInitializer {
 		ItemRegistry.registerModItems();
 		EntityRegistry.registerModEntityTypes();
 		ModSounds.registerModSounds();
+		RangedWeaponItem.registerAutoFireTick();
 	}
 }
