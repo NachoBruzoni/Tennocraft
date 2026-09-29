@@ -7,6 +7,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.GoalSelector;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.AABB;
 
 import java.util.List;
@@ -43,5 +44,8 @@ public class InfestedMobBehavior {
         if (variant == null) return;
 
         InfestationHelper.convertToInfested(victimMob, variant);
+    }
+    public static void makeAmphibious(Mob mob) {
+        mob.setPathfindingMalus(BlockPathTypes.WATER, 0.0F); // stop treating water as something to avoid
     }
 }

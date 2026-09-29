@@ -10,6 +10,8 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.ZombieAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
+import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.Turtle;
 import net.minecraft.world.entity.monster.Zombie;
@@ -25,6 +27,12 @@ public class InfestedSkeletonEntity extends Zombie implements InfestedMob {
     public InfestedSkeletonEntity(EntityType<? extends Zombie> entityType, Level level) {
         super(entityType, level);
         this.dispatcher = new InfestedSkeletonDispatcher(this);
+        InfestedMobBehavior.makeAmphibious(this);
+    }
+
+    @Override
+    protected PathNavigation createNavigation(Level level) {
+        return new AmphibiousPathNavigation(this, level);
     }
 
     @Override
