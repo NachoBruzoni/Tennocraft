@@ -2,6 +2,7 @@ package name.tennocraft.weapon;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 public abstract class RangedWeaponItem extends Item {
-    protected final RangedWeaponStats stats;
+    public final RangedWeaponStats stats;
 
     protected RangedWeaponItem(Properties properties, RangedWeaponStats stats) {
         super(properties);
@@ -24,7 +25,7 @@ public abstract class RangedWeaponItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return stats.fireMode == FireMode.CHARGE ? stats.fireRateTicks : 72000; // 72000 = "until released", vanilla's own bow/shield convention
+        return 72000; // AUTO and CHARGE both ride this; SEMI never reaches it — it fires directly in use()
     }
 
     @Override
@@ -76,5 +77,9 @@ public abstract class RangedWeaponItem extends Item {
         if (elapsed >= stats.fireRateTicks) { // full charge required — a partial charge does nothing, per your note
             fire(level, player, stack);
         }
+    }
+
+    protected void playFireSound(Level level, Player player, SoundEvent sound) {
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), sound, player.getSoundSource(), 1.0F, 1.0F);
     }
 }

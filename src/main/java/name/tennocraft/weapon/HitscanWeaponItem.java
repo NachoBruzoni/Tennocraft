@@ -1,5 +1,6 @@
 package name.tennocraft.weapon;
 
+import name.tennocraft.registry.ModSounds;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -23,6 +24,7 @@ public class HitscanWeaponItem extends RangedWeaponItem {
         Vec3 start = player.getEyePosition();
         Vec3 look = player.getViewVector(1.0F);
         Vec3 end = start.add(look.scale(RANGE));
+        playFireSound(level, player, stats.fireSound);
 
         HitResult blockHit = level.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
         double actualRange = blockHit.getType() != HitResult.Type.MISS ? start.distanceTo(blockHit.getLocation()) : RANGE;

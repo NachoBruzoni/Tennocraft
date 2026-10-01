@@ -15,6 +15,9 @@ public class ModSounds {
     public static final SoundEvent INFESTED_SKELETON_HURT = register("infested_skeleton_hurt");
     public static final SoundEvent INFESTED_SKELETON_DEATH = register("infested_skeleton_death");
 
+    public static final SoundEvent BRATON_FIRE = register("braton_fire");
+    public static final SoundEvent PARIS_FIRE = register("paris_fire");
+
     private static SoundEvent register(String path) {
         ResourceLocation id = new ResourceLocation(TennoCraft.TENNOCRAFT, path);
         return net.minecraft.core.Registry.register(BuiltInRegistries.SOUND_EVENT, id, SoundEvent.createVariableRangeEvent(id));

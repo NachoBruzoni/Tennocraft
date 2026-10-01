@@ -4,7 +4,11 @@ import name.tennocraft.registry.EntityRegistry;
 import name.tennocraft.registry.ItemRegistry;
 import name.tennocraft.registry.ModSounds;
 import name.tennocraft.weapon.RangedWeaponItem;
+import name.tennocraft.weapon.WeaponFirePacket;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.AttackBlockCallback;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.minecraft.world.InteractionResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,5 +28,12 @@ public class TennoCraft implements ModInitializer {
 		EntityRegistry.registerModEntityTypes();
 		ModSounds.registerModSounds();
 		RangedWeaponItem.registerAutoFireTick();
+		WeaponFirePacket.registerServerReceivers();
+
+		AttackBlockCallback.EVENT.register((player, level, hand, pos, direction) ->
+				player.getMainHandItem().getItem() instanceof RangedWeaponItem ? InteractionResult.FAIL : InteractionResult.PASS);
+		AttackEntityCallback.EVENT.register((player, level, hand, entity, hitResult) ->
+				player.getMainHandItem().getItem() instanceof RangedWeaponItem ? InteractionResult.FAIL : InteractionResult.PASS);
 	}
+
 }

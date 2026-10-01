@@ -31,11 +31,6 @@ public class InfestedSkeletonEntity extends Zombie implements InfestedMob {
     }
 
     @Override
-    protected PathNavigation createNavigation(Level level) {
-        return new AmphibiousPathNavigation(this, level);
-    }
-
-    @Override
     protected void registerGoals() {
         super.registerGoals();
         InfestedMobBehavior.addAggroGoal(this, this.targetSelector);

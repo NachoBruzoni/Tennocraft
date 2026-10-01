@@ -23,6 +23,7 @@ public class ProjectileWeaponItem extends RangedWeaponItem {
                     (net.minecraft.world.entity.projectile.Projectile) projectileFactory.apply(level, player);
             projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 0.0F);
             level.addFreshEntity(projectile);
+            playFireSound(level, player, stats.fireSound);
         }
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, player.getSoundSource(), 1.0F, 1.0F);
     }

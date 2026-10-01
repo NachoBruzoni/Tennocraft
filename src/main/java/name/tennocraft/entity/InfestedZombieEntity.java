@@ -34,11 +34,6 @@ public class InfestedZombieEntity extends Zombie implements InfestedMob {
     }
 
     @Override
-    protected PathNavigation createNavigation(Level level) {
-        return new AmphibiousPathNavigation(this, level);
-    }
-
-    @Override
     protected void registerGoals() {
         super.registerGoals();
         InfestedMobBehavior.addAggroGoal(this, this.targetSelector);
@@ -47,8 +42,7 @@ public class InfestedZombieEntity extends Zombie implements InfestedMob {
     @Override
     protected void addBehaviourGoals() {
         this.goalSelector.addGoal(2, new ZombieAttackGoal(this, (double)1.0F, false));
-        this.goalSelector.addGoal(6, new MoveThroughVillageGoal(this, (double)1.0F, true, 4, this::canBreakDoors));
-        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
+//        this.goalSelector.addGoal(1, new WaterAvoidingRandomStrollGoal(this, (double)1.0F));
         this.targetSelector.addGoal(1, (new HurtByTargetGoal(this, new Class[0])).setAlertOthers(new Class[]{ZombifiedPiglin.class}));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, IronGolem.class, true));

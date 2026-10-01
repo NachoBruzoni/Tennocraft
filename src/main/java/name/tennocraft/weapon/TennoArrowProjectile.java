@@ -24,7 +24,7 @@ public class TennoArrowProjectile extends AbstractArrow {
     }
 
     public TennoArrowProjectile(Level level, Player owner, ResourceLocation weaponId) {
-        super(EntityRegistry.TENNO_ARROW_PROJECTILE, owner, level, ItemStack.EMPTY, null);
+        super(EntityRegistry.TENNO_ARROW_PROJECTILE, owner, level);
         this.entityData.set(WEAPON_ID, weaponId.toString());
     }
 
