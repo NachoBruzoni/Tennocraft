@@ -11,8 +11,8 @@ public class ClientWeaponInputHandler {
     public static void register() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.player == null) return;
-            boolean isRangedWeapon = client.player.getMainHandItem().getItem() instanceof RangedWeaponItem;
-            boolean isDown = isRangedWeapon && client.options.keyAttack.isDown();
+            boolean isTennoWeapon = client.player.getMainHandItem().getItem() instanceof TennoWeaponItem;
+            boolean isDown = isTennoWeapon && client.options.keyAttack.isDown();
 
             if (isDown && !wasDown) {
                 ClientPlayNetworking.send(WeaponFirePacket.START, PacketByteBufs.create());
@@ -21,7 +21,7 @@ public class ClientWeaponInputHandler {
             }
             wasDown = isDown;
 
-            if (isRangedWeapon) {
+            if (isTennoWeapon) {
                 client.options.keyAttack.setDown(false); // consume the press so vanilla doesn't ALSO mine/attack this tick
             }
         });

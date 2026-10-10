@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
-public abstract class RangedWeaponItem extends Item {
+public abstract class RangedWeaponItem extends Item implements TennoWeaponItem {
     public final RangedWeaponStats stats;
 
     protected RangedWeaponItem(Properties properties, RangedWeaponStats stats) {

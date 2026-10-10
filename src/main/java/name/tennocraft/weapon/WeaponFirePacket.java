@@ -18,14 +18,23 @@ public class WeaponFirePacket {
         ServerPlayNetworking.registerGlobalReceiver(START, (server, player, handler, buf, responseSender) -> {
             server.execute(() -> {
                 ItemStack held = player.getMainHandItem();
-                if (!(held.getItem() instanceof RangedWeaponItem weapon)) return;
-
-                if (weapon.stats.fireMode == FireMode.SEMI) {
-                    weapon.fire(player.level(), player, held);
-                    player.getCooldowns().addCooldown(weapon, weapon.stats.fireRateTicks);
-                } else {
-                    player.startUsingItem(InteractionHand.MAIN_HAND);
+                if (held.getItem() instanceof RangedWeaponItem weapon) {
+                    if (weapon.stats.fireMode == FireMode.SEMI) {
+                        weapon.fire(player.level(), player, held);
+                        player.getCooldowns().addCooldown(weapon, weapon.stats.fireRateTicks);
+                    } else {
+                        player.startUsingItem(InteractionHand.MAIN_HAND);
+                    }
+                } else if (held.getItem() instanceof MeleeWeaponItem) {
+                    MeleeCombatManager.onFireStart(player);
                 }
+            });
+        });
+
+        ServerPlayNetworking.registerGlobalReceiver(STOP, (server, player, handler, buf, responseSender) -> {
+            server.execute(() -> {
+                player.stopUsingItem();
+                MeleeCombatManager.onFireStop(player);
             });
         });
 

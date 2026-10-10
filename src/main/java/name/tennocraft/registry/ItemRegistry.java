@@ -55,6 +55,22 @@ public class ItemRegistry {
             (level, player) -> new TennoArrowProjectile(level, player, new ResourceLocation(TennoCraft.TENNOCRAFT, "paris"))
     ));
 
+    public static final Item SKANA = registerItem("skana", new MeleeWeaponItem(
+            new Item.Properties(),
+            new MeleeWeaponStats(
+                    List.of(new DamageComponent(DamageType.SLASH, 84), new DamageComponent(DamageType.PUNCTURE, 18), new DamageComponent(DamageType.IMPACT, 18)),
+                    0.25F,   // status chance
+                    0.20F,   // crit chance
+                    2.0F,    // crit multiplier
+                    0,       // punch through — reserved
+                    20,      // attackSpeedTicks — placeholder, yours to tune
+                    3.0F,    // range (blocks)
+                    90.0F,   // sweep radius (degrees, treated as full arc — see flag above)
+                    1.75F,   // heavy attack multiplier
+                    15       // heavy windup ticks
+            )
+    ));
+
     static {
         WeaponRegistry.register(new ResourceLocation(TennoCraft.TENNOCRAFT, "paris"), ((ProjectileWeaponItem) PARIS).stats);
     }
